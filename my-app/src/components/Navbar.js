@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Button} from './Button';
 import './Navbar.css';
 
@@ -17,15 +17,19 @@ function Navbar(){
         }
     };
 
+    useEffect(() => {
+        showButton();
+    },[]);
+
     window.addEventListener('resize', showButton);
 
     return (
         <nav className= "navbar">
             <div className="navbar-container">
-                <a href= "/" className="navbar-logo" > 
+                <a href= "/" className="navbar-logo" onClick={closeMobileMenu}> 
                     <i class="fa-solid fa-user-astronaut"> ILUVSPACE</i>
                 </a>
-                <div className="menu-icon">
+                <div className="menu-icon" onClick={handleClick}>
                     <i className={click ? "fas fa-times" : "fas fa-bars"} />
                 </div>
                 <ul className={click ? "nav-menu active" : "nav-menu"}>
